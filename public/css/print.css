@@ -1,0 +1,21 @@
+@media print {
+    /* styles go here */
+    body{
+        background-color: #fff;
+    }
+    #finaldesign > section {
+        margin: 0 auto;
+        text-align: center;
+        padding: 2em;
+        background: #202024;
+
+    }
+
+
+    #finaldesign .shirteditor main section ul li{
+        border: 2px solid #000;
+    }
+    #finaldesign .settings, nav{
+        display: none;
+    }
+   }
