@@ -5,8 +5,10 @@ let app = express()
 let http = require('http').createServer(app);
 let io = require('socket.io')(http);
 
-let port = process.env.PORT || 5000
-let users = {}
+let port = process.env.PORT || 3000
+
+
+
 //view Engines 
 app.set('view engine', 'ejs')
 app.set('views', 'views')
@@ -15,22 +17,45 @@ app.set('views', 'views')
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 
 // Set Static path for non html code like pictures and CSS
 app.use(express.static(path.join(__dirname + 'public')))
+let rooms = { name: {}}
+let users = {}
 
 
 app.get('/', (req, res) => {
-
-    res.sendFile(__dirname + '/index.html');
+    res.render('index', {
+      rooms: rooms
+    })
+    // res.sendFile(__dirname + '/index.html');
   })
 
 
-  
+  app.post('/room', (req, res) => {
+    if (rooms[req.body.room] != null){
+      return  res.redirect('/')
+    }
+      rooms[req.body.room] = {users: {}}
+      res.redirect(req.body.room)
+      // send message that new room was created
+      io.emit('room-created', req.body.room)
+    })
+
 
   
+app.get('/:room', (req, res) => {
+  if (rooms[req.params.room] == null){
+    return  res.redirect('/')
+  }
+  res.render('room', {
+    roomName: req.params.room
+  })
+  // res.sendFile(__dirname + '/index.html');
+})
+
   io.on('connection', function(socket){
     socket.on('new-user', name => {
       users[socket.id] = name
