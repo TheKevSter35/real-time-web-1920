@@ -22,15 +22,13 @@ app.use(bodyParser.urlencoded({
 
 // Set Static path for non html code like pictures and CSS
 app.use(express.static(path.join(__dirname + 'public')))
-let rooms = { name: {}}
-let users = {}
+let rooms = { }
 
 
 app.get('/', (req, res) => {
     res.render('index', {
       rooms: rooms
     })
-    // res.sendFile(__dirname + '/index.html');
   })
 
 
@@ -57,20 +55,31 @@ app.get('/:room', (req, res) => {
 })
 
   io.on('connection', function(socket){
-    socket.on('new-user', name => {
-      users[socket.id] = name
-      socket.broadcast.emit('user-connected' , name)
+    socket.on('new-user', (room, name) => {
+      socket.join(room)
+      rooms[room].users[socket.id] = name
+      socket.to(room).broadcast.emit('user-connected' , name)
       })
-    socket.on('send-chat-message' , message => {
-      socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] });
-    })
-  
-    socket.on('disconnect', function(){
-      socket.broadcast.emit('user-disconnected', users[socket.id] );
-      delete users[socket.id]
-        })
-  });
 
+      socket.on('send-chat-message', (room, message) => {
+        socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
+      })
+
+      
+    socket.on('disconnect', function(){
+      getUserRooms(socket).forEach(room =>{
+        socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])    
+        delete rooms[room].users[socket.id]
+      })
+    })
+  })
+
+  function getUserRooms(socket) {
+    return Object.entries(rooms).reduce((names, [name, room]) => {
+      if(room.users[socket.id] != null) names.push(name)
+      return names
+    },[])
+  }
 
   
 http.listen(port, () => console.log(`Example app listening on port ${port}!`))

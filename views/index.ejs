@@ -9,26 +9,29 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
+    <section>
     <div id="room-container">
       <form action="/room" method="POST">
         <input type="text" name="room" required>
         <button type="submit">New Room</button>
       </form>
-      <ul>
+      <ul id="room-overview">
       <% Object.keys(rooms).forEach(room => { %>
-        
+        <li>
+          <a href="/<%= room %>">
           <h2><%= room %></h2>
-          <a href="/<%= room %>">Join</a>
-       
+        </a>
+          <img src="./source/placeholder.png">
+          
+        </li>
         <% }) %>
       </ul>
       
     </div>
+  </section>
     <script defer src="/socket.io/socket.io.js"></script>
-    <script defer src="./script.js"></script>
+    <script defer src="./js/script.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
-    
-    <script src="" async defer></script>
   </body>
 </html>
