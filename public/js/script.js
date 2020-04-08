@@ -12,9 +12,25 @@ socket.emit('new-user', roomName, name)
 messageForm.addEventListener('submit', e => {
     e.preventDefault(); // prevents page reloading
     const message = messageInput.value
-    appendMessage(`You: \n ${message}`)
+    if(message == '/help'){
+        appendMessage(`You: ${message}`)
+        setTimeout(function(){ appendMessage(`SERVER: You need some help`) }, 1000);
+        
+         } 
+         else if(message == '/marco'){
+            appendMessage(`You: ${message}`)
+            setTimeout(function(){ appendMessage(`SERVER: polo`) }, 1000);
+            appendMessage(`SERVER: polo`)
+           } 
+           else if(message == 'fuck'){
+            appendMessage(`You: i'm shy`)
+           } 
+         else {
+            appendMessage(`You: ${message}`)
     socket.emit('send-chat-message', roomName, message)
     messageInput.value = ''
+        }
+    
 })
 }
 
@@ -30,6 +46,7 @@ socket.on('room-created', room => {
 
 socket.on('chat-message', data => {
     appendMessage(`${data.name}: ${data.message}`)
+    
 })
 
 socket.on('user-connected', name => {
@@ -40,7 +57,11 @@ socket.on('user-disconnected', name => {
     appendMessage(`SERVER: ${name} disconnected`)
 })
 
+function commands(message) {
+    
 
+
+}
 
 function appendMessage(message) {
     const messageElement = document.createElement('li')
