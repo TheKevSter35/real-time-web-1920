@@ -15,13 +15,16 @@ messageForm.addEventListener('submit', e => {
     if(message == '/help'){
         appendMessage(`You: ${message}`)
         setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
+        messageInput.value = ''
         
          } 
-           else if(message == 'fuck'){
-            appendMessage(`You: i'm shy`)
+           else if(message == 'fuck you'){
+            appendMessage(`You: You are amazing`)
+            messageInput.value = ''
            } 
            else if(message == '/room'){
-            appendMessage(`Welcome in room: ${roomName}`)
+            appendMessage(`SERVER: Welcome in room: ${roomName}`)
+            messageInput.value = ''
            } 
          else {
             appendMessage(`You: ${message}`)
