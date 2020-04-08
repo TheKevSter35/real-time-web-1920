@@ -14,16 +14,14 @@ messageForm.addEventListener('submit', e => {
     const message = messageInput.value
     if(message == '/help'){
         appendMessage(`You: ${message}`)
-        setTimeout(function(){ appendMessage(`SERVER: You need some help`) }, 1000);
+        setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
         
          } 
-         else if(message == '/marco'){
-            appendMessage(`You: ${message}`)
-            setTimeout(function(){ appendMessage(`SERVER: polo`) }, 1000);
-            appendMessage(`SERVER: polo`)
-           } 
            else if(message == 'fuck'){
             appendMessage(`You: i'm shy`)
+           } 
+           else if(message == '/room'){
+            appendMessage(`Welcome in room: ${roomName}`)
            } 
          else {
             appendMessage(`You: ${message}`)
