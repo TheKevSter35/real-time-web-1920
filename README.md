@@ -10,6 +10,8 @@ During this course you will learn how to build a **meaningful** real-time applic
 
 [Rubric][rubric]
 
+<img width="384" alt="fbcf5e3c744fc8350ba8c829eff6c90a" src="https://user-images.githubusercontent.com/43183768/78974178-b46e2800-7b11-11ea-8fc1-e07d580ec645.png">
+
 ## Concept
 
 ![IMG_20200406_155901__01](https://user-images.githubusercontent.com/43183768/78566489-96f24300-781f-11ea-9ce1-12651f31d724.jpg)
