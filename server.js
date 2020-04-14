@@ -2,10 +2,11 @@ let express = require('express')
 let bodyParser = require('body-parser')
 let path = require('path')
 let app = express()
+let fetch = require('node-fetch');
 let http = require('http').createServer(app);
 let io = require('socket.io')(http);
 
-let port = process.env.PORT || 3000
+let port = process.env.PORT || 5000
 
 
 
@@ -48,12 +49,22 @@ app.get('/:room', (req, res) => {
   if (rooms[req.params.room] == null){
     return  res.redirect('/')
   }
+  
+
+  fetch(`https://api.rawg.io/api/games`)
+    .then(async response => {
+    const GamesData = await response.json()
+    let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0]; 
+ console.log(randomItem)
   res.render('room', {
-    roomName: req.params.room
+    roomName: req.params.room,
+    randomGames: randomItem,
+    GamesData,
+    
   })
   // res.sendFile(__dirname + '/index.html');
 })
-
+})
   io.on('connection', function(socket){
     socket.on('new-user', (room, name) => {
       socket.join(room)
@@ -62,7 +73,7 @@ app.get('/:room', (req, res) => {
       })
 
       socket.on('send-chat-message', (room, message) => {
-        socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
+        socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id], randomGames: randomItem })
       })
 
       

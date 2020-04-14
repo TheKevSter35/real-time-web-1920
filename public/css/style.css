@@ -12,7 +12,13 @@ body {
  
     min-height: calc(100vh - 0px);
 }
+img {
+    width: 20em;
+}
 
+#messages .correct {
+    background-color: green;
+}
 ul {
     text-decoration: none;
     margin: 0;

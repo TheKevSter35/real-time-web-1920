@@ -4,6 +4,7 @@ const messageInput = document.getElementById('message-input')
 const messageContainer = document.getElementById('messages')
 const roomContainer = document.getElementById('room-container')
 
+
 if (messageForm != null) {
     const name = prompt('what is your name')
 appendMessage('You joined')
@@ -15,17 +16,9 @@ messageForm.addEventListener('submit', e => {
     if(message == '/help'){
         appendMessage(`You: ${message}`)
         setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
+        console.log()
         messageInput.value = ''
-        
-         } 
-           else if(message == 'fuck you'){
-            appendMessage(`You: You are amazing`)
-            messageInput.value = ''
-           } 
-           else if(message == '/room'){
-            appendMessage(`SERVER: Welcome in room: ${roomName}`)
-            messageInput.value = ''
-           } 
+    }
          else {
             appendMessage(`You: ${message}`)
     socket.emit('send-chat-message', roomName, message)
@@ -50,6 +43,11 @@ socket.on('chat-message', data => {
     
 })
 
+socket.on('answer', randomGames => {
+    appendMessage(`${randomGames.name}`)
+    
+})
+
 socket.on('user-connected', name => {
     appendMessage(`SERVER: ${name} connected`)
 })
@@ -58,14 +56,15 @@ socket.on('user-disconnected', name => {
     appendMessage(`SERVER: ${name} disconnected`)
 })
 
-function commands(message) {
-    
-
-
-}
-
 function appendMessage(message) {
     const messageElement = document.createElement('li')
+    messageElement.innerText = message
+    messageContainer.append(messageElement)
+    
+}
+function correct(message) {
+    const messageElement = document.createElement('li')
+    messageElement.classList.add("correct");
     messageElement.innerText = message
     messageContainer.append(messageElement)
     
