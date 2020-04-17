@@ -10,10 +10,9 @@ During this course you will learn how to build a **meaningful** real-time applic
 
 [Rubric][rubric]
 
-<img width="384" alt="fbcf5e3c744fc8350ba8c829eff6c90a" src="https://user-images.githubusercontent.com/43183768/78974178-b46e2800-7b11-11ea-8fc1-e07d580ec645.png">
+![IMG_20200417_124058__01](https://user-images.githubusercontent.com/43183768/79561021-e7339580-80a8-11ea-89c6-a6f0c8433e22.jpg)
+
 
 ## Concept
 
-![IMG_20200406_155901__01](https://user-images.githubusercontent.com/43183768/78566489-96f24300-781f-11ea-9ce1-12651f31d724.jpg)
-
-With the app you can join rooms with other users that also play the same game and communicate. 
+With the app you can join rooms with other users and play a guessing game. The users see a picture/clip from a game and the users have to guess the name of the game. The user that guess first will be the king of the room (a king of the hill idea). The game is over al with the user guessed the most games. 
