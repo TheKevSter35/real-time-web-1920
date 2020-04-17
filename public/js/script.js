@@ -1,3 +1,4 @@
+
 const socket = io()
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
@@ -16,9 +17,14 @@ messageForm.addEventListener('submit', e => {
     if(message == '/help'){
         appendMessage(`You: ${message}`)
         setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
-        console.log()
         messageInput.value = ''
     }
+    // else if(message == '/help'){
+    //     appendMessage(`You: ${message}`)
+    //     setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
+    //     console.log(`${randomGames.name}`)
+    //     messageInput.value = ''
+    // }
          else {
             appendMessage(`You: ${message}`)
     socket.emit('send-chat-message', roomName, message)
@@ -43,8 +49,9 @@ socket.on('chat-message', data => {
     
 })
 
-socket.on('answer', randomGames => {
-    appendMessage(`${randomGames.name}`)
+socket.on('correct-message', data => {
+    appendMessage(`${data.name}: ${data.message}`)
+    console.log("test")
     
 })
 
