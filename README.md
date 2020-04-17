@@ -10,6 +10,8 @@ During this course you will learn how to build a **meaningful** real-time applic
 
 [Rubric][rubric]
 
+## DLC
+
 ![IMG_20200417_124058__01](https://user-images.githubusercontent.com/43183768/79561021-e7339580-80a8-11ea-89c6-a6f0c8433e22.jpg)
 
 
