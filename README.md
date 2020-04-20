@@ -12,7 +12,9 @@ During this course you will learn how to build a **meaningful** real-time applic
 
 ## DLC
 
-![IMG_20200417_124058__01](https://user-images.githubusercontent.com/43183768/79561021-e7339580-80a8-11ea-89c6-a6f0c8433e22.jpg)
+![Untitled Diagram (1)](https://user-images.githubusercontent.com/43183768/79788600-34ce2d80-8349-11ea-9ce6-5ff8feea122f.jpg)
+
+
 
 
 ## Concept
