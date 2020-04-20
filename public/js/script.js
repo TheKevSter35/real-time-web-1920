@@ -49,12 +49,16 @@ socket.on('chat-message', data => {
     
 })
 
+socket.on('newImage', data => {
+    console.log(data);
+    const imgContainer = document.getElementById("gameImg")
+    imgContainer.innerHTML = `<img src="${data.gameImg}" alt="">`
+    
+})
 
 socket.on('correct-message', data => {
     appendMessageCorrect(`SERVER: ${data.name} GOOD JOB`)
-    // let list = document.getElementById("gameImg");
-    // list.removeChild(list.childNodes[0]);
-    // list.removeChild(list.childNodes[0]);
+
 })
 
 

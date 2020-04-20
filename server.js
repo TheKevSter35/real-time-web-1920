@@ -63,30 +63,26 @@ io.on('connection', function (socket) {
 
  
 
-  socket.on('game-start', (room, img) => {
-    io.in(room).emit('imgQuiz',  {
-      gameImg: img
-    })
-  })
+
  
   socket.on('new-user', (room, name) => {
 
     socket.join(room)
  
        console.log( 'Room: ' + [room] + " have " + io.sockets.adapter.rooms[room].length + " players");
-       if (io.sockets.adapter.rooms[room].length == 4)
+       if (io.sockets.adapter.rooms[room].length == 2)
        {
         console.log('READY')
         fetch(`https://api.rawg.io/api/games`)
         .then(async response => {
           const GamesData = await response.json()
           let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
-          gameImg = randomItem.background_image ;
+          const gameImg = randomItem.background_image ;
           gameName = randomItem.name ;
           
           console.log('2e = ' + gameName);
           console.log('3e = ' + gameImg);
-      
+          io.in(room).emit('newImage', {gameImg});
         })
        }
   
