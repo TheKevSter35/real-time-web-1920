@@ -51,15 +51,12 @@ socket.on('chat-message', data => {
 
 
 socket.on('correct-message', data => {
-    correct(`SERVER: ${data.name} GOOD JOB`)
+    appendMessageCorrect(`SERVER: ${data.name} GOOD JOB`)
     // let list = document.getElementById("gameImg");
     // list.removeChild(list.childNodes[0]);
     // list.removeChild(list.childNodes[0]);
 })
 
-socket.on('imgQuiz', img => {
-    appendMessage(`SERVER: ${img} connected`)
-})
 
 socket.on('user-connected', name => {
     appendMessage(`SERVER: ${name} connected`)
@@ -75,10 +72,10 @@ function appendMessage(message) {
     messageContainer.append(messageElement)
     
 }
-function img(imgGame) {
+function appendMessageCorrect(message) {
     const messageElement = document.createElement('li')
     messageElement.classList.add("correct");
-    messageElement.innerText = imgGame
+    messageElement.innerText = message
     messageContainer.append(messageElement)
     
 }
