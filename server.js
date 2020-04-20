@@ -55,11 +55,9 @@ app.get('/:room', (req, res) => {
   fetch(`https://api.rawg.io/api/games`)
     .then(async response => {
       const GamesData = await response.json()
-      let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
 
       res.render('room', {
         roomName: req.params.room,
-        randomGames: randomItem,
         GamesData,
 
       })
@@ -81,7 +79,7 @@ io.on('connection', function (socket) {
       const GamesData = await response.json()
       let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
 
-      socket.emit('message', );
+      // socket.emit('message', );
       gameName = randomItem.name;
       console.log('2e = ' + gameName);
 
@@ -89,17 +87,20 @@ io.on('connection', function (socket) {
 
   socket.on('send-chat-message', (room, message) => {
     if (message == gameName) {
-      socket.to(room).broadcast.emit('correct-message', {
-        message: message,
-        name: rooms[room].users[socket.id]
-      })
       console.log("CORRECT");
+      io.in(room).emit('correct-message',  {
+        message: message,
+        name: rooms[room].users[socket.id],
+      })
+      
+      
 
       
     } else {
-      socket.to(room).broadcast.emit('correct-message', {
+      socket.to(room).broadcast.emit('chat-message', {
         message: message,
         name: rooms[room].users[socket.id]
+        
       })
     }
     // socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id], randomGames: randomItem })

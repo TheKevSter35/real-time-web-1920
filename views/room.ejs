@@ -14,9 +14,14 @@
   <body>
    <section>
      <main>
-      <img src="<%= randomGames.background_image %>">
+       <div id="gameImg">
+      <% GamesData.results.forEach(data => { %>
+      <img src="<%= data.background_image %>">
+      <% }) %>
+    </div>
+      <ul id="messages"></ul>
      </main>
-    <ul id="messages"></ul>
+    
     
     <form id="send-container">
       <input id="message-input" autocomplete="off" required />

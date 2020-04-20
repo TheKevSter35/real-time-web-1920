@@ -45,14 +45,16 @@ socket.on('room-created', room => {
 })
 
 socket.on('chat-message', data => {
-    appendMessage(`${data.name}: ${data.message}`)
+    appendMessage(`${data.name}: ${data.message} gasgaga`)
     
 })
 
+
 socket.on('correct-message', data => {
-    appendMessage(`${data.name}: ${data.message}`)
-    console.log("test")
-    
+    correct(`SERVER: ${data.name} GOOD JOB`)
+    let list = document.getElementById("gameImg");
+    list.removeChild(list.childNodes[0]);
+    list.removeChild(list.childNodes[0]);
 })
 
 socket.on('user-connected', name => {

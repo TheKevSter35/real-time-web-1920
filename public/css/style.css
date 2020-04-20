@@ -15,9 +15,12 @@ body {
 img {
     width: 20em;
 }
+main {
+    margin-bottom: 4em;
+}
 
 #messages .correct {
-    background-color: green;
+    background-color: green !important;
 }
 ul {
     text-decoration: none;
