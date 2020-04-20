@@ -45,16 +45,20 @@ socket.on('room-created', room => {
 })
 
 socket.on('chat-message', data => {
-    appendMessage(`${data.name}: ${data.message} gasgaga`)
+    appendMessage(`${data.name}: ${data.message} `)
     
 })
 
 
 socket.on('correct-message', data => {
     correct(`SERVER: ${data.name} GOOD JOB`)
-    let list = document.getElementById("gameImg");
-    list.removeChild(list.childNodes[0]);
-    list.removeChild(list.childNodes[0]);
+    // let list = document.getElementById("gameImg");
+    // list.removeChild(list.childNodes[0]);
+    // list.removeChild(list.childNodes[0]);
+})
+
+socket.on('imgQuiz', img => {
+    appendMessage(`SERVER: ${img} connected`)
 })
 
 socket.on('user-connected', name => {
@@ -71,10 +75,10 @@ function appendMessage(message) {
     messageContainer.append(messageElement)
     
 }
-function correct(message) {
+function img(imgGame) {
     const messageElement = document.createElement('li')
     messageElement.classList.add("correct");
-    messageElement.innerText = message
+    messageElement.innerText = imgGame
     messageContainer.append(messageElement)
     
 }

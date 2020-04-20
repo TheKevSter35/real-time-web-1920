@@ -50,41 +50,45 @@ app.get('/:room', (req, res) => {
   if (rooms[req.params.room] == null) {
     return res.redirect('/')
   }
-
-
-  fetch(`https://api.rawg.io/api/games`)
-    .then(async response => {
-      const GamesData = await response.json()
-
-      res.render('room', {
+   res.render('room', {
         roomName: req.params.room,
-        GamesData,
 
       })
       // res.sendFile(__dirname + '/index.html');
     })
 
 
-})
 let gameName = '';
 io.on('connection', function (socket) {
+
+  fetch(`https://api.rawg.io/api/games`)
+  .then(async response => {
+    const GamesData = await response.json()
+    let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
+          // <img  src="<%= data.background_image %>">
+  
+    // io.in(room).emit('imgQuiz',  {img: randomItem.background_image})
+
+    // socket.emit('message', );
+    gameImg = randomItem.background_image ;
+    gameName = randomItem.name ;
+    
+    console.log('2e = ' + gameName);
+    console.log('3e = ' + gameImg);
+
+  })
+
+  socket.on('game-start', (room, img) => {
+    io.in(room).emit('imgQuiz',  {
+      gameImg: img
+    })
+  })
+
   socket.on('new-user', (room, name) => {
     socket.join(room)
     rooms[room].users[socket.id] = name
     socket.to(room).broadcast.emit('user-connected', name)
   })
-
-  fetch(`https://api.rawg.io/api/games`)
-    .then(async response => {
-      const GamesData = await response.json()
-      let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
-
-      // socket.emit('message', );
-      gameName = randomItem.name;
-      console.log('2e = ' + gameName);
-
-    })
-
   socket.on('send-chat-message', (room, message) => {
     if (message == gameName) {
       console.log("CORRECT");
@@ -92,10 +96,6 @@ io.on('connection', function (socket) {
         message: message,
         name: rooms[room].users[socket.id],
       })
-      
-      
-
-      
     } else {
       socket.to(room).broadcast.emit('chat-message', {
         message: message,
