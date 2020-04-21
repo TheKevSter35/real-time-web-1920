@@ -7,6 +7,44 @@ With the app you can join rooms with other users and play a guessing game. The u
 ![Untitled Diagram (1)](https://user-images.githubusercontent.com/43183768/79788600-34ce2d80-8349-11ea-9ce6-5ff8feea122f.jpg)
 
 
+## Install 
+
+```
+# Clone repository
+git clone https://github.com/YOUR-USERNAME/performance-web-apps-1920.git
+
+cd performance-web-apps-1920
+
+# Install dependencies
+npm install
+
+# Start liveserver
+npm run dev
+```
+
+## Dependencies 
+
+```
+"body-parser": "^1.19.0",
+"ejs": "^3.0.2",
+"express": "^4.17.1",
+"node-fetch": "^2.6.0",
+"nodemon": "^2.0.2",
+"socket.io": "^2.3.0"
+```
+
+
+## API
+
+### RAWG 
+
+RAWG have alot information about games. it is also free no key required. 
+
+* Ratelimit: Unknown
+* 
+
+
+
 
 ## To do List
 - [x] Build the Chat function
