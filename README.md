@@ -9,5 +9,19 @@ With the app you can join rooms with other users and play a guessing game. The u
 
 
 ## To do List
+- [x] Build the Chat function
+- [x] Build Rooms function
+- [x] Connect with a API (Gaming)
+- [x] Start the game if there are 4 people 
+- [x] Render the image if there are 4 people joined
+- [x] Allow user the typ the name of the game and check if it is correct
+- [ ] If correct answer fetch a new img and the name for the user to guess.
+- [ ] Add scores for the users if correct
+- [ ] After 10 img the game is over 
+- [ ] Show the winner if the game is over (high score)
+- [ ] Updating Styling
 
+## wishlist
 
+- [ ] track how much rooms are created and connected (show it in a chart)
+- [ ] add DB (to save the rooms if the game is not over)
