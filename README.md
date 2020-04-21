@@ -53,9 +53,10 @@ RAWG have alot information about games. it is also free no key required.
 - [x] Start the game if there are 4 people 
 - [x] Render the image if there are 4 people joined
 - [x] Allow user the typ the name of the game and check if it is correct
-- [ ] If correct answer fetch a new img and the name for the user to guess.
+- [x] If correct answer fetch a new img and the name for the user to guess.
 - [ ] Add scores for the users if correct
-- [ ] After 10 img the game is over 
+- [x] Add rondes 
+- [ ] After 10 (rondes) the game is over 
 - [ ] Show the winner if the game is over (high score)
 - [ ] Updating Styling
 
