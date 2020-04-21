@@ -19,12 +19,12 @@ messageForm.addEventListener('submit', e => {
         setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
         messageInput.value = ''
     }
-    // else if(message == '/help'){
-    //     appendMessage(`You: ${message}`)
-    //     setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
-    //     console.log(`${randomGames.name}`)
-    //     messageInput.value = ''
-    // }
+    else if(message == '/help'){
+        appendMessage(`You: ${message}`)
+        setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
+        console.log(`${randomGames.name}`)
+        messageInput.value = ''
+    }
          else {
             appendMessage(`You: ${message}`)
     socket.emit('send-chat-message', roomName, message)
@@ -52,7 +52,7 @@ socket.on('chat-message', data => {
 socket.on('newImage', data => {
     console.log(data);
     const imgContainer = document.getElementById("gameImg")
-    imgContainer.innerHTML = `<img src="${data.gameImg}" alt="">`
+    imgContainer.innerHTML = `<img src="${data.gameImg}" alt=""> <h2> What is the name of this game?</h2> `
     
 })
 

@@ -148,7 +148,19 @@ form button {
 
 }
 
+div#gameImg {
+    text-align: center;
+    position: relative;
+    padding: 2em;
+    background-color: #000;
+    color: #fff;
+    min-height: calc(100vh - 78px );
+}
 
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
 
 @keyframes colorshift {
     0% {
