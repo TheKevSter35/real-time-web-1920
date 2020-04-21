@@ -50,61 +50,79 @@ app.get('/:room', (req, res) => {
   if (rooms[req.params.room] == null) {
     return res.redirect('/')
   }
-   res.render('room', {
-        roomName: req.params.room,
+  res.render('room', {
+    roomName: req.params.room,
 
-      })
-      // res.sendFile(__dirname + '/index.html');
-    })
+  })
+  // res.sendFile(__dirname + '/index.html');
+})
 
 
 let gameName = '';
+
+let ronde = [1];
 io.on('connection', function (socket) {
 
- 
 
-
- 
   socket.on('new-user', (room, name) => {
-
-    socket.join(room)
- 
-       console.log( 'Room: ' + [room] + " have " + io.sockets.adapter.rooms[room].length + " players");
-       if (io.sockets.adapter.rooms[room].length == 2)
-       {
-        console.log('READY')
-        fetch(`https://api.rawg.io/api/games`)
+    async function randomGame() {
+      fetch(`https://api.rawg.io/api/games`)
         .then(async response => {
           const GamesData = await response.json()
           let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
-          const gameImg = randomItem.background_image ;
-          gameName = randomItem.name ;
-          
+          const gameImg = randomItem.background_image;
+          gameName = randomItem.name;
           console.log('2e = ' + gameName);
           console.log('3e = ' + gameImg);
-          io.in(room).emit('newImage', {gameImg});
+          io.in(room).emit('newImage', {
+            gameImg
+          });
         })
-       }
-  
-    rooms[room].users[socket.id] = name
-    
-    socket.to(room).broadcast.emit('user-connected', name)
+    }
+    socket.join(room)
+
+    console.log('Room: ' + [room] + " have " + io.sockets.adapter.rooms[room].length + " players");
+    if (io.sockets.adapter.rooms[room].length == 2) {
+      console.log('READY')
+      randomGame()
+      io.in(room).emit('ronde-message', { ronde: ronde })
+      rooms[room].users[socket.id] = name
+      socket.to(room).broadcast.emit('user-connected', name)
+    }
   })
+
+
   socket.on('send-chat-message', (room, message) => {
     if (message == gameName) {
       console.log("CORRECT");
-      io.in(room).emit('correct-message',  {
+      ronde++
+      fetch(`https://api.rawg.io/api/games`)
+        .then(async response => {
+          const GamesData = await response.json()
+          let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
+          const gameImg = randomItem.background_image;
+          gameName = randomItem.name;
+          console.log('Name = ' + gameName);
+          console.log('IMG = ' + gameImg);
+          console.log('ronde = ' + ronde);
+          io.in(room).emit('newImage', {
+            gameImg
+          });
+        })
+      io.in(room).emit('correct-message', {
         message: message,
         name: rooms[room].users[socket.id],
+      })
+      io.in(room).emit('ronde-message', {
+        ronde: ronde
       })
     } else {
       socket.to(room).broadcast.emit('chat-message', {
         message: message,
         name: rooms[room].users[socket.id]
-        
+
       })
     }
-    // socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id], randomGames: randomItem })
   })
 
 

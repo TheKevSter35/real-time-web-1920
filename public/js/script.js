@@ -61,6 +61,11 @@ socket.on('correct-message', data => {
 
 })
 
+socket.on('ronde-message', data => {
+    appendRonde(`Ronde: ${data.ronde} / 10`)
+
+})
+
 
 socket.on('user-connected', name => {
     appendMessage(`SERVER: ${name} connected`)
@@ -79,6 +84,13 @@ function appendMessage(message) {
 function appendMessageCorrect(message) {
     const messageElement = document.createElement('li')
     messageElement.classList.add("correct");
+    messageElement.innerText = message
+    messageContainer.append(messageElement)
+    
+}
+function appendRonde(message) {
+    const messageElement = document.createElement('li')
+    messageElement.classList.add("ronde");
     messageElement.innerText = message
     messageContainer.append(messageElement)
     

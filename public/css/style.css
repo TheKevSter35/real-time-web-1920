@@ -22,6 +22,12 @@ main {
 #messages .correct {
     background-color: green !important;
 }
+#messages .ronde {
+    background-color: rgb(170, 112, 5) !important;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 1em 10px;
+}
 ul {
     text-decoration: none;
     margin: 0;
@@ -102,15 +108,15 @@ form button {
     width: 17.5em;
     flex-direction: column-reverse;
     margin: 2.5px;
-    height: 15em;
+    height: auto;
 }
 #room-overview li a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    background-color: transparent;
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
+    /* right: 0; */
+    /* bottom: -1px; */
+    /* background-color: transparent; */
     color: transparent;
     transition: .3s ease 0s;
     color: #fff;
@@ -120,7 +126,7 @@ form button {
 
 } */
 #room-overview li h2 {
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
     left: 0;
     right: 0;
@@ -148,7 +154,7 @@ form button {
 
 }
 
-div#gameImg {
+.game-container{
     text-align: center;
     position: relative;
     padding: 2em;
@@ -159,7 +165,7 @@ div#gameImg {
 
 main {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1.5fr;
 }
 
 @keyframes colorshift {
