@@ -11,9 +11,9 @@ With the app you can join rooms with other users and play a guessing game. The u
 
 ```
 # Clone repository
-git clone https://github.com/YOUR-USERNAME/performance-web-apps-1920.git
+git clone https://github.com/YOUR-USERNAME/real-time-web-1920.git
 
-cd performance-web-apps-1920
+cd real-time-web-1920
 
 # Install dependencies
 npm install
