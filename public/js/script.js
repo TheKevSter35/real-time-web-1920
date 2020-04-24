@@ -4,6 +4,7 @@ const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 const messageContainer = document.getElementById('messages')
 const roomContainer = document.getElementById('room-container')
+const main = document.querySelector('main')
 
 
 if (messageForm != null) {
@@ -76,6 +77,16 @@ socket.on('user-disconnected', name => {
     appendMessage(`SERVER: ${name} disconnected`)
 })
 
+
+socket.on('game-over', () => {
+
+    GameOverMessage()
+    // setTimeout(function(){ window.location.replace("/");}, 10000);
+    
+    
+})
+
+
 function appendMessage(message) {
     const messageElement = document.createElement('li')
     messageElement.innerText = message
@@ -96,7 +107,13 @@ function appendRonde(message) {
     messageContainer.append(messageElement)
     
 }
-
+function GameOverMessage() {
+    const messageElement = document.createElement('section')
+    messageElement.classList.add("end-screen");
+    messageElement.innerHTML = `<div class="end-screen-message "><h1> Match is over</h1> <h2>The winner is NAME</h2> </div>`
+    main.append(messageElement)
+    
+}
 
 
 function scrollToBottom() {

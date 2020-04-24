@@ -93,29 +93,40 @@ io.on('connection', function (socket) {
 
 
   socket.on('send-chat-message', (room, message) => {
+
     if (message == gameName) {
       console.log("CORRECT");
-      ronde++
+  
+      if(ronde == 3){
+        console.log("GAME OVER");
+        io.in(room).emit('game-over')
+      }
+      else{
+      
+      io.in(room).emit('correct-message',
       fetch(`https://api.rawg.io/api/games`)
-        .then(async response => {
-          const GamesData = await response.json()
-          let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
-          const gameImg = randomItem.background_image;
-          gameName = randomItem.name;
-          console.log('Name = ' + gameName);
-          console.log('IMG = ' + gameImg);
-          console.log('ronde = ' + ronde);
-          io.in(room).emit('newImage', {
-            gameImg
-          });
-        })
-      io.in(room).emit('correct-message', {
+      .then(async response => {
+        const GamesData = await response.json()
+        let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
+        const gameImg = randomItem.background_image;
+        gameName = randomItem.name;
+        console.log('Name = ' + gameName);
+        console.log('IMG = ' + gameImg);
+        console.log('ronde = ' + ronde);
+        io.in(room).emit('newImage', {
+          gameImg
+        });
+      }),
+     {
         message: message,
-        name: rooms[room].users[socket.id],
+        name: rooms[room].users[socket.id]
+        
+        
       })
-      io.in(room).emit('ronde-message', {
-        ronde: ronde
+      io.in(room).emit('ronde-message',  {
+        ronde: [ronde++] , ronde
       })
+    }
     } else {
       socket.to(room).broadcast.emit('chat-message', {
         message: message,
@@ -123,13 +134,6 @@ io.on('connection', function (socket) {
 
       })
     }
-  })
-
-  socket.on('deleteroom', function () {
-    getUserRooms(socket).forEach(room => {
-      socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
-      delete rooms[room].users[socket.id]
-    })
   })
 
 

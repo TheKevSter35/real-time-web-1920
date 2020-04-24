@@ -175,6 +175,37 @@ main {
     grid-template-columns: 1fr 1.5fr;
 }
 
+section.end-screen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 9;
+    text-align: center;
+    padding: 3em;
+    color: #fff;
+}
+section.end-screen::after {
+    position: absolute;
+    background-image: linear-gradient(45deg,#380cd6 10%,#e50ae7 50%,#380cd6 100%);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+    content:"";
+    opacity: 0.6;
+    background-size: 400%;
+    animation: colorshift 6s linear 0s infinite;
+}
+
+
+section.end-screen .end-screen-message {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 @keyframes colorshift {
     0% {
       background-position: 0 100%;
