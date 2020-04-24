@@ -18,17 +18,14 @@ messageForm.addEventListener('submit', e => {
         appendMessage(`You: ${message}`)
         setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
         messageInput.value = ''
+        scrollToBottom();
     }
-    else if(message == '/help'){
-        appendMessage(`You: ${message}`)
-        setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
-        console.log(`${randomGames.name}`)
-        messageInput.value = ''
-    }
+
          else {
             appendMessage(`You: ${message}`)
     socket.emit('send-chat-message', roomName, message)
     messageInput.value = ''
+    scrollToBottom();
         }
     
 })
@@ -46,6 +43,7 @@ socket.on('room-created', room => {
 
 socket.on('chat-message', data => {
     appendMessage(`${data.name}: ${data.message} `)
+    scrollToBottom();
     
 })
 
@@ -58,17 +56,20 @@ socket.on('newImage', data => {
 
 socket.on('correct-message', data => {
     appendMessageCorrect(`SERVER: ${data.name} GOOD JOB`)
+    scrollToBottom();
 
 })
 
 socket.on('ronde-message', data => {
     appendRonde(`Ronde: ${data.ronde} / 10`)
+    scrollToBottom();
 
 })
 
 
 socket.on('user-connected', name => {
     appendMessage(`SERVER: ${name} connected`)
+    scrollToBottom();
 })
 
 socket.on('user-disconnected', name => {
@@ -94,4 +95,11 @@ function appendRonde(message) {
     messageElement.innerText = message
     messageContainer.append(messageElement)
     
+}
+
+
+
+function scrollToBottom() {
+    const messages = document.getElementById('messages');
+    messages.scrollTop = messages.scrollHeight;
 }

@@ -72,8 +72,8 @@ io.on('connection', function (socket) {
           let randomItem = GamesData.results[Math.random() * GamesData.results.length | 0];
           const gameImg = randomItem.background_image;
           gameName = randomItem.name;
-          console.log('2e = ' + gameName);
-          console.log('3e = ' + gameImg);
+          console.log('Name = ' + gameName);
+          console.log('Img = ' + gameImg);
           io.in(room).emit('newImage', {
             gameImg
           });
@@ -124,6 +124,14 @@ io.on('connection', function (socket) {
       })
     }
   })
+
+  socket.on('deleteroom', function () {
+    getUserRooms(socket).forEach(room => {
+      socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
+      delete rooms[room].users[socket.id]
+    })
+  })
+})
 
 
   socket.on('disconnect', function () {

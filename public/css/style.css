@@ -80,8 +80,15 @@ form button {
     margin: 0;
     padding: 0;
     color: #fff;
+    overflow-y: auto;
+    height: 90vh;
+    -ms-overflow-style: none;
 }
 
+
+#messages::-webkit-scrollbar {
+    display: none;
+}
 #messages li {
     padding: 5px 10px;
 }
