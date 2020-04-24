@@ -131,7 +131,7 @@ io.on('connection', function (socket) {
       delete rooms[room].users[socket.id]
     })
   })
-})
+
 
 
   socket.on('disconnect', function () {
