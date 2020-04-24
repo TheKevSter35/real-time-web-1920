@@ -55,10 +55,18 @@ RAWG have alot information about games. it is also free no key required.
 - [x] Allow user the typ the name of the game and check if it is correct
 - [x] If correct answer fetch a new img and the name for the user to guess.
 - [ ] Add scores for the users if correct
+- [x] Issue that the user can't scroll if there are a lot of messages.
 - [x] Add rondes 
-- [ ] After 10 (rondes) the game is over 
+- [x] Add game over screen
+- [ ] After 10 (rondes) the game is over and room is deleted
 - [ ] Show the winner if the game is over (high score)
 - [ ] Updating Styling
+
+## backlog
+
+- [ ] if correct fetch only in the room not all rooms
+- [ ] if correct add 1 ronde only in the room not all rooms
+- [ ] Delete room if game is over (now it just disconnect the player)
 
 ## wishlist
 
