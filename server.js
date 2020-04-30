@@ -58,12 +58,13 @@ app.get('/:room', (req, res) => {
 })
 
 
-let gameName = '';
 
+let gameName = '';
 let ronde = [1];
+// let score = [0];
 io.on('connection', function (socket) {
 
-
+  
   socket.on('new-user', (room, name) => {
     async function randomGame() {
       fetch(`https://api.rawg.io/api/games`)
@@ -85,8 +86,10 @@ io.on('connection', function (socket) {
     if (io.sockets.adapter.rooms[room].length == 2) {
       console.log('READY')
       randomGame()
+      ronde = [1];
       io.in(room).emit('ronde-message', { ronde: ronde })
       rooms[room].users[socket.id] = name
+      // score = score;
       socket.to(room).broadcast.emit('user-connected', name)
     }
   })
@@ -96,13 +99,15 @@ io.on('connection', function (socket) {
 
     if (message == gameName) {
       console.log("CORRECT");
+      
   
-      if(ronde == 3){
+      if(ronde == 5){
         console.log("GAME OVER");
-        io.in(room).emit('game-over')
+        io.in(room).emit('game-over');
+        delete rooms[room];
       }
       else{
-      
+       
       io.in(room).emit('correct-message',
       fetch(`https://api.rawg.io/api/games`)
       .then(async response => {

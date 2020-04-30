@@ -58,15 +58,17 @@ RAWG have alot information about games. it is also free no key required.
 - [x] Issue that the user can't scroll if there are a lot of messages.
 - [x] Add rondes 
 - [x] Add game over screen
-- [ ] After 10 (rondes) the game is over and room is deleted
+- [x] After 5 (rondes) the game is over
 - [ ] Show the winner if the game is over (high score)
 - [ ] Updating Styling
 
 ## backlog
 
-- [ ] if correct fetch only in the room not all rooms
+- [ ] if correct fetch only in the room not all rooms if multiple games are started
 - [ ] if correct add 1 ronde only in the room not all rooms
-- [ ] Delete room if game is over (now it just disconnect the player)
+- [x] Delete room if game is over (now it just disconnect the player)
+- [x] Only delete the room were the game is over
+- [ ] Fix that the same game isnt asked again.
 
 ## wishlist
 

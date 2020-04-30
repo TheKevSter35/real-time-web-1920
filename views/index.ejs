@@ -17,7 +17,7 @@
       </form>
       <ul id="room-overview">
       <% Object.keys(rooms).forEach(room => { %>
-        <li>
+        <li class="<%= room %>">
           <a href="/<%= room %>">
           <h2><%= room %></h2>
         </a>

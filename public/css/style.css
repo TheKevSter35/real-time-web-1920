@@ -195,7 +195,7 @@ section.end-screen::after {
     top: 0;
     z-index: -1;
     content:"";
-    opacity: 0.6;
+    opacity: 0.8;
     background-size: 400%;
     animation: colorshift 6s linear 0s infinite;
 }

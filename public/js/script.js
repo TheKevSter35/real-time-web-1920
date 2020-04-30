@@ -12,6 +12,8 @@ if (messageForm != null) {
 appendMessage('You joined')
 socket.emit('new-user', roomName, name)
 
+
+
 messageForm.addEventListener('submit', e => {
     e.preventDefault(); // prevents page reloading
     const message = messageInput.value
@@ -21,6 +23,13 @@ messageForm.addEventListener('submit', e => {
         messageInput.value = ''
         scrollToBottom();
     }
+    if(message == '/room'){
+        appendMessage(`You: ${message}`)
+        setTimeout(function(){ appendMessage(`SERVER: ${roomName}`) }, 1000);
+        messageInput.value = ''
+        scrollToBottom();
+    }
+
 
          else {
             appendMessage(`You: ${message}`)
@@ -81,7 +90,7 @@ socket.on('user-disconnected', name => {
 socket.on('game-over', () => {
 
     GameOverMessage()
-    // setTimeout(function(){ window.location.replace("/");}, 10000);
+    setTimeout(function(){ window.location.replace("/");}, 10000);
     
     
 })
@@ -115,6 +124,13 @@ function GameOverMessage() {
     
 }
 
+function totalUsers(name) {
+    const messageElement = document.createElement('li')
+    messageElement.classList.add("ronde");
+    messageElement.innerText = message
+    messageContainer.append(messageElement)
+    
+}
 
 function scrollToBottom() {
     const messages = document.getElementById('messages');
