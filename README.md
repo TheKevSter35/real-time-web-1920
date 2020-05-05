@@ -2,12 +2,12 @@
 
 During this course you will learn how to build a meaningful real-time application. You will learn techniques to setup an open connection between the client and the server. This will enable you to send data in real-time both ways, at the same time.
 
-## Concept
+## Concept: Game of Trivia
 
 <img width="" alt="game-trivia" src="https://user-images.githubusercontent.com/43183768/81063236-bbe9dc80-8ed7-11ea-8d39-0aecdd8bd2a2.png">
 
 
-With the app you can create/join rooms with other users and play a guessing game. The users see a (picture/clip/info) from a game and  have to guess the name of the game. iF you guess first you will get a point and a new ronde will start. after 10 rondes the game is over and the user with the most points win. 
+With Game of Trivia yuo can test your game knowledge with other users and determine who is the king of games. The users see a (picture/clip/info) from a game and  have to guess the name of the game. iF you guess first you will get a point and a new ronde will start. after 10 rondes the game is over and the user with the most points win. 
 
 
 ### Features
@@ -15,8 +15,9 @@ With the app you can create/join rooms with other users and play a guessing game
 * Make/Join a Room
 * Ronde based
 * Chat function
-* You can typ commands. \
+* You can typ commands.
 * You get points if you guess it first
+* Game over screen with the winner of the game.
 
 #### Commands
 * /help : explain how the game works
