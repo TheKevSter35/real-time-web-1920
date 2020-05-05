@@ -28,6 +28,11 @@ main {
     font-size: 1.2em;
     padding: 1em 10px;
 }
+#messages .score {
+    background-color: #000 !important;
+    font-style:italic ;
+    color:#fff
+}
 ul {
     text-decoration: none;
     margin: 0;

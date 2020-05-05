@@ -76,8 +76,14 @@ socket.on('ronde-message', data => {
 
 })
 
+socket.on('update-score', data => {
+    appendScore(`${data.name}  now have ${data.score} points `)
+    scrollToBottom();
 
-socket.on('user-connected', name => {
+})
+
+
+socket.on('user-connected', (name) => {
     appendMessage(`SERVER: ${name} connected`)
     scrollToBottom();
 })
@@ -85,6 +91,15 @@ socket.on('user-connected', name => {
 socket.on('user-disconnected', name => {
     appendMessage(`SERVER: ${name} disconnected`)
 })
+
+// socket.on('show-users', data => {
+//     var i;
+// for (i = 0; i < data.name.length; i++) {
+//     appendMessage(`SERVER: ${data.name[i]} disfsfssfconnected`)
+// }
+
+// })
+
 
 
 socket.on('game-over', () => {
@@ -116,21 +131,30 @@ function appendRonde(message) {
     messageContainer.append(messageElement)
     
 }
-function GameOverMessage() {
-    const messageElement = document.createElement('section')
-    messageElement.classList.add("end-screen");
-    messageElement.innerHTML = `<div class="end-screen-message "><h1> Match is over</h1> <h2>The winner is NAME</h2> </div>`
-    main.append(messageElement)
-    
-}
 
-function totalUsers(name) {
+function appendScore(message) {
     const messageElement = document.createElement('li')
-    messageElement.classList.add("ronde");
+    messageElement.classList.add("score");
     messageElement.innerText = message
     messageContainer.append(messageElement)
     
 }
+
+function GameOverMessage() {
+    const messageElement = document.createElement('section')
+    messageElement.classList.add("end-screen");
+    messageElement.innerHTML = `<div class="end-screen-message "><h1> Match is over</h1>  </div>`
+    main.append(messageElement)
+    
+}
+
+// function totalUsers(name) {
+//     const messageElement = document.createElement('li')
+//     messageElement.classList.add("ronde");
+//     messageElement.innerText = message
+//     messageContainer.append(messageElement)
+    
+// }
 
 function scrollToBottom() {
     const messages = document.getElementById('messages');
