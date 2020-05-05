@@ -54,7 +54,6 @@ app.get('/:room', (req, res) => {
     roomName: req.params.room,
 
   })
-  // res.sendFile(__dirname + '/index.html');
 })
 
 
@@ -95,10 +94,6 @@ io.on('connection', function (socket) {
       io.in(room).emit('ronde-message', {
         ronde: ronde
       })
-
-
-      // score = score;
-
     }
   })
 
@@ -109,7 +104,7 @@ io.on('connection', function (socket) {
       console.log("CORRECT");
 
 
-      if (ronde == 5) {
+      if (ronde == 10) {
         console.log("GAME OVER");
         io.in(room).emit('game-over');
         delete rooms[room];
