@@ -75,7 +75,7 @@ npm run dev
 
 ### RAWG 
 
-RAWG have alot information about games. 
+This is a huge database with information about games and everything relevant. 
 
 * Ratelimit: Unknown
 * KEY: no key required
