@@ -109,7 +109,7 @@ io.on('connection', function (socket) {
       console.log("CORRECT");
 
 
-      if (ronde == 5) {
+      if (ronde == 10) {
         console.log("GAME OVER");
         io.in(room).emit('game-over');
         delete rooms[room];
