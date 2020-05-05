@@ -35,11 +35,11 @@ With Game of Trivia yuo can test your game knowledge with other users and determ
 * ``` new-user ``` : You have joined message (other users will not see this message) 
 * ``` room-created ``` : Creates a new room
 * ``` user-connected ```: a user has joined a room 
-* ``` ronde-message ```: message which round the game is after correct answer
-* ``` send-chat-message ``` Your message
+* ``` ronde-message ```:  broadcast message which round the game is
+* ``` send-chat-message ``` triggers from input chat
 * ``` correct-message ``` message that you have the correct answer
-* ``` update-score ``` Add a point to the user
-* ``` chat-message ``` message from others 
+* ``` update-score ``` Add a point to the user, message is send to broadcast
+* ``` chat-message ``` message is send to broadcast
 * ``` user-disconnected ``` user has leaved the room
 * ``` newImage ``` add new image
 * ``` game-over ``` The game is over and the room wil be deleted
