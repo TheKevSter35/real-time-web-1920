@@ -29,9 +29,11 @@ main {
     padding: 1em 10px;
 }
 #messages .score {
-    background-color: #000 !important;
+    background-color: rgb(8, 105, 105) !important;
     font-style:italic ;
-    color:#fff
+}
+#messages .help {
+    background-color: purple !important;
 }
 ul {
     text-decoration: none;

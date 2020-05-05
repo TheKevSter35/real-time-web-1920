@@ -18,14 +18,23 @@ messageForm.addEventListener('submit', e => {
     e.preventDefault(); // prevents page reloading
     const message = messageInput.value
     if(message == '/help'){
-        appendMessage(`You: ${message}`)
-        setTimeout(function(){ appendMessage(`SERVER: function is not working right now :( `) }, 1000);
+        setTimeout(function(){ appendHelpMessage (`SERVER: How to play \n 
+        1. You see a picture of a game \n 
+        2. if you know the name of the game. Typ it in chat  \n
+        3. Typ the name correctly: Good:(Fallout: New Vegas) Wrong:(fallout new vegas) \n
+        4. guess right you will get a point \n
+        5. after 10 rondes the user with the most points win `) }, 1000);
         messageInput.value = ''
         scrollToBottom();
     }
     if(message == '/room'){
+        setTimeout(function(){ appendMessage(`SERVER: Room name: ${roomName}`) }, 1000);
+        messageInput.value = ''
+        scrollToBottom();
+    }
+    if(message == '/marco'){
         appendMessage(`You: ${message}`)
-        setTimeout(function(){ appendMessage(`SERVER: ${roomName}`) }, 1000);
+        setTimeout(function(){ appendMessage(`SERVER: Polo`) }, 1000);
         messageInput.value = ''
         scrollToBottom();
     }
@@ -113,6 +122,14 @@ socket.on('game-over', () => {
 
 function appendMessage(message) {
     const messageElement = document.createElement('li')
+    messageElement.innerText = message
+    messageContainer.append(messageElement)
+    
+}
+
+function appendHelpMessage(message) {
+    const messageElement = document.createElement('li')
+    messageElement.classList.add("help");
     messageElement.innerText = message
     messageContainer.append(messageElement)
     
