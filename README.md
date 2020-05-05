@@ -27,8 +27,7 @@ With Game of Trivia yuo can test your game knowledge with other users and determ
 
 ## DLC
 
-![Untitled Diagram (1)](https://user-images.githubusercontent.com/43183768/79788600-34ce2d80-8349-11ea-9ce6-5ff8feea122f.jpg)
-
+![DLC](https://user-images.githubusercontent.com/43183768/81080010-90bfb700-8ef0-11ea-8d9d-7f906e3e16d6.png)
 
 ## Events
 
