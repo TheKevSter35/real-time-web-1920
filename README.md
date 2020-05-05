@@ -95,12 +95,12 @@ https://rawg.io/
 - [x] Issue that the user can't scroll if there are a lot of messages.
 - [x] Add rondes 
 - [x] Add game over screen
-- [x] After 5 (rondes) the game is over
+- [x] After 10 (rondes) the game is over 
 - [ ] Show the winner if the game is over (high score)
 - [ ] Updating Styling
-- [ ] Show gameplay from the game 
+- [ ] Show gameplay footage from the game
 - [ ] Show all users in room with there name and score. 
-- [ ] /hint will give the user a hint (but it will cost 0.5 points)
+- [ ] /hint will give the user a hint to guess the game name (but it will cost 0.5 points)
 
 ## backlog
 
@@ -108,7 +108,7 @@ https://rawg.io/
 - [x] Only delete the room were the game is over
 - [ ] if correct fetch only in the room not all rooms if multiple games are started
 - [ ] if correct add 1 ronde only in the room not all rooms
-- [ ] Fix that the same game isnt asked again. 
+- [ ] Fix that the same gameName isnt asked again (fetch). 
 
 ## wishlist
 
