@@ -30,6 +30,21 @@ With Game of Trivia yuo can test your game knowledge with other users and determ
 ![Untitled Diagram (1)](https://user-images.githubusercontent.com/43183768/79788600-34ce2d80-8349-11ea-9ce6-5ff8feea122f.jpg)
 
 
+## Events
+
+* ``` new-user ``` : You have joined message (other users will not see this message) 
+* ``` room-created ``` : Creates a new room
+* ``` user-connected ```: a user has joined a room 
+* ``` ronde-message ```: message which round the game is after correct answer
+* ``` send-chat-message ``` Your message
+* ``` correct-message ``` message that you have the correct answer
+* ``` update-score ``` Add a point to the user
+* ``` chat-message ``` message from others 
+* ``` user-disconnected ``` user has leaved the room
+* ``` newImage ``` add new image
+* ``` game-over ``` The game is over and the room wil be deleted
+
+
 ## Install 
 
 ```
