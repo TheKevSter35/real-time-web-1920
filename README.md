@@ -102,7 +102,7 @@ https://rawg.io/
 - [ ] Show all users in room with there name and score. 
 - [ ] /hint will give the user a hint to guess the game name (but it will cost 0.5 points)
 
-## backlog
+## Backlog
 
 - [x] Delete room if game is over
 - [x] Only delete the room were the game is over
@@ -110,12 +110,12 @@ https://rawg.io/
 - [ ] if correct add 1 ronde only in the room not all rooms
 - [ ] Fix that the same gameName isnt asked again (fetch). 
 
-## wishlist
+## Wishlist
 
 - [ ] track how much rooms are created and connected (show it in a chart)
 - [ ] add DB (to save the rooms if the game is not over)
 - [ ] Add variantes for the users to guess (Name of character, name of publisher )
 
 
-## conclusion
+## Conclusion
 RTW was really new for me. The chat assignment was a good way to start learning socket.io. after that i struggled alot for what i wanna build. The more i worked with sockets the more i liked it. It is really fun to make a game with it. i chose RAWG because is easy to use and have alot of data to make a fun quiz. i'm happy with what i have made in a short time. 
