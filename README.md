@@ -116,3 +116,6 @@ https://rawg.io/
 - [ ] add DB (to save the rooms if the game is not over)
 - [ ] Add variantes for the users to guess (Name of character, name of publisher )
 
+
+## conclusion
+RTW was really new for me. The chat assignment was a good way to start learning socket.io. after that i struggled alot for what i wanna build. The more i worked with sockets the more i liked it. It is really fun to make a game with it. i chose RAWG because is easy to use and have alot of data to make a fun quiz. i'm happy with what i have made in a short time. 
