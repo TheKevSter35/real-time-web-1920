@@ -104,7 +104,7 @@ io.on('connection', function (socket) {
       console.log("CORRECT");
 
 
-      if (ronde == 10) {
+      if (ronde == 5) {
         console.log("GAME OVER");
         io.in(room).emit('game-over');
         delete rooms[room];

@@ -80,7 +80,7 @@ socket.on('correct-message', data => {
 })
 
 socket.on('ronde-message', data => {
-    appendRonde(`Ronde: ${data.ronde} / 10`)
+    appendRonde(`Ronde: ${data.ronde} / 5`)
     scrollToBottom();
 
 })
