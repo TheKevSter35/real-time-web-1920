@@ -27,7 +27,21 @@ With Game of Trivia yuo can test your game knowledge with other users and determ
 
 ## DLC
 
-![Untitled Diagram (1)](https://user-images.githubusercontent.com/43183768/79788600-34ce2d80-8349-11ea-9ce6-5ff8feea122f.jpg)
+![DLC](https://user-images.githubusercontent.com/43183768/81080010-90bfb700-8ef0-11ea-8d9d-7f906e3e16d6.png)
+
+## Events
+
+* ``` new-user ``` : You have joined message (other users will not see this message) 
+* ``` room-created ``` : Creates a new room
+* ``` user-connected ```: a user has joined a room 
+* ``` ronde-message ```:  broadcast message which round the game is
+* ``` send-chat-message ``` triggers from input chat
+* ``` correct-message ``` message that you have the correct answer
+* ``` update-score ``` Add a point to the user, message is send to broadcast
+* ``` chat-message ``` message is send to broadcast
+* ``` user-disconnected ``` user has leaved the room
+* ``` newImage ``` add new image
+* ``` game-over ``` The game is over and the room wil be deleted
 
 
 ## Install 
@@ -61,12 +75,12 @@ npm run dev
 
 ### RAWG 
 
-RAWG have alot information about games. 
+This is a huge database with information about games and everything relevant. 
 
 * Ratelimit: Unknown
 * KEY: no key required
 
-
+https://rawg.io/
 
 
 ## To do List
@@ -81,24 +95,27 @@ RAWG have alot information about games.
 - [x] Issue that the user can't scroll if there are a lot of messages.
 - [x] Add rondes 
 - [x] Add game over screen
-- [x] After 5 (rondes) the game is over
+- [x] After 10 (rondes) the game is over 
 - [ ] Show the winner if the game is over (high score)
 - [ ] Updating Styling
-- [ ] Show gameplay from the game 
+- [ ] Show gameplay footage from the game
 - [ ] Show all users in room with there name and score. 
-- [ ] /hint will give the user a hint (but it will cost 0.5 points)
+- [ ] /hint will give the user a hint to guess the game name (but it will cost 0.5 points)
 
-## backlog
+## Backlog
 
 - [x] Delete room if game is over
 - [x] Only delete the room were the game is over
 - [ ] if correct fetch only in the room not all rooms if multiple games are started
 - [ ] if correct add 1 ronde only in the room not all rooms
-- [ ] Fix that the same game isnt asked again. 
+- [ ] Fix that the same gameName isnt asked again (fetch). 
 
-## wishlist
+## Wishlist
 
 - [ ] track how much rooms are created and connected (show it in a chart)
 - [ ] add DB (to save the rooms if the game is not over)
 - [ ] Add variantes for the users to guess (Name of character, name of publisher )
 
+
+## Conclusion
+RTW was really new for me. The chat assignment was a good way to start learning socket.io. after that i struggled alot for what i wanna build. The more i worked with sockets the more i liked it. It is really fun to make a game with it. i chose RAWG because is easy to use and have alot of data to make a fun quiz. i'm happy with what i have made in a short time. 
